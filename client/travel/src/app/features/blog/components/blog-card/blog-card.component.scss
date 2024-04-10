@@ -1,0 +1,47 @@
+.card {
+  width: 100%;
+  height: 100%;
+  text-align: start;
+}
+
+.card-header {
+}
+
+.card-image-container {
+  min-height: 30%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.card-content {
+  padding: 16px;
+
+  p {
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: pre-wrap;
+  }
+}
+
+.card-actions {
+  > button:not(:last-child) {
+    margin-right: 5px;
+  }
+}

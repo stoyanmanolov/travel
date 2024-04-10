@@ -1,0 +1,16 @@
+<div class="comment">
+  <div class="avatar-container">
+    <mat-icon class="avatar">account_circle</mat-icon>
+  </div>
+  <mat-card class="card">
+    <mat-card-header class="card-header">
+      <b>{{ comment.username }}</b>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <p>{{ comment.content }}</p>
+    </mat-card-content>
+    <mat-card-footer class="card-footer">
+      <span>{{ comment.createdAt | dateFrom }}</span>
+    </mat-card-footer>
+  </mat-card>
+</div>

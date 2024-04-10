@@ -1,0 +1,24 @@
+<div
+  [ngClass]="{
+    'snack-bar': true,
+    'snack-bar-info': isInfo(),
+    'snack-bar-success': isSuccess(),
+    'snack-bar-error': isError(),
+  }"
+>
+  <mat-icon class="snack-bar-icon">{{ getIcon() }}</mat-icon>
+  <span class="snack-bar-label" matSnackBarLabel>
+    {{ data.message }}
+  </span>
+  <span matSnackBarActions>
+    <button
+      class="snack-bar-action"
+      *ngIf="data.action"
+      mat-button
+      matSnackBarAction
+      (click)="dismiss()"
+    >
+      {{ data.action }}
+    </button>
+  </span>
+</div>

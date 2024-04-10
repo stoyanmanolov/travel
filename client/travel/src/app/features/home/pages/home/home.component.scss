@@ -1,0 +1,24 @@
+.container {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  h1 {
+    font-size: 80px;
+  }
+
+  p {
+    line-height: 180%;
+    font-size: 24px;
+  }
+
+  .icon {
+    height: 135px;
+    width: 135px;
+    font-size: 135px;
+  }
+}

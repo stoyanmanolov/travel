@@ -1,0 +1,15 @@
+--INSERT INTO user
+--(username, password_hash, user_role)
+--VALUES
+--("username", "$2a$10$BHKFNefZ2HTzOAG/Yp7DEO1zf0.qw9O6LJhT2qD/vUwxdWi0KnNx.", "ADMIN");
+
+--INSERT INTO destination
+--(name, country)
+--VALUES
+--("Tokyo", "Japan");
+--
+--INSERT INTO tour
+--(title,price,destination_id,start_date,end_date,image_id,description)
+--VALUES
+--("Japanese Festival",120.00,1,"2024-03-10 16:00:00.644000","2024-04-20 15:00:00.644000",NULL,
+--"An interesting festival to attend. An interesting festival to attend.An interesting festival to attend.An interesting festival to attend.An interesting festival to attend.An interesting festival to attend.An interesting festival to attend.An interesting festival to attend.An interesting festival to attend.An interesting festival to attend.An interesting festival to attend.");

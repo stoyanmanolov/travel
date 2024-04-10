@@ -1,0 +1,35 @@
+<app-dialog-wrapper [title]="'Search tours'" [hideConfirm]="true">
+  <div class="search-container">
+    <mat-form-field>
+      <mat-icon matIconPrefix>search</mat-icon>
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        type="text"
+        [ngModel]="searchModel"
+        (ngModelChange)="searchModelChanged.next($event)"
+      />
+    </mat-form-field>
+    <div class="search-list-container">
+      @if (tours.length === 0) {
+      <p>No tours found.</p>
+      } @else {
+      <mat-list class="search-list">
+        <mat-list-item
+          *ngFor="let tour of tours"
+          (click)="handleTourClick(tour)"
+          class="search-list-item"
+        >
+          <mat-icon class="icon" matListItemAvatar>flight</mat-icon>
+          <p>
+            <b>{{ tour.title }}</b>
+          </p>
+          <p>
+            {{ tour.destinationName + ", " + tour.destinationCountry }}
+          </p>
+        </mat-list-item>
+      </mat-list>
+      }
+    </div>
+  </div>
+</app-dialog-wrapper>

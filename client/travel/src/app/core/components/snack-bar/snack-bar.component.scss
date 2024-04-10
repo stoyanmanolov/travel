@@ -1,0 +1,30 @@
+.snack-bar {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+
+  .snack-bar-icon {
+    color: inherit;
+  }
+  .snack-bar-action {
+    color: inherit;
+  }
+}
+
+.snack-bar-label {
+  flex: 1;
+  margin: 0 10px;
+  color: #ffffff;
+}
+
+.snack-bar-info {
+  color: var(--info);
+}
+
+.snack-bar-success {
+  color: var(--success);
+}
+
+.snack-bar-error {
+  color: var(--warn);
+}

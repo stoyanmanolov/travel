@@ -1,0 +1,21 @@
+<div
+  [ngClass]="{
+    section: true,
+    'section-centered': (isSmall$ | async)
+  }"
+>
+  <h2>Latest blogs</h2>
+  @if (blogs.length === 0) {
+  <p class="not-found-text">No blogs found.</p>
+  } @else {
+  <mat-grid-list
+    class="cards-container"
+    [cols]="(isSmall$ | async) ? 1 : (isMedium$ | async) ? 3 : 4"
+    rowHeight="2:3"
+  >
+    <mat-grid-tile *ngFor="let blog of blogs">
+      <app-blog-card class="card" [blog]="blog"></app-blog-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  }
+</div>

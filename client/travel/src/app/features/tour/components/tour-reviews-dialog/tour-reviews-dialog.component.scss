@@ -1,0 +1,27 @@
+.list {
+  max-width: 350px;
+
+  .list-item {
+    .list-item-icon {
+      margin-left: 0;
+      margin-right: 15px;
+      height: 35px;
+      width: 35px;
+      font-size: 35px;
+    }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-field-rating {
+    width: 100%;
+  }
+
+  .form-field-description {
+    width: 100%;
+  }
+}

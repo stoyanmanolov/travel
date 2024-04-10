@@ -1,0 +1,14 @@
+.container {
+  padding: 15px;
+}
+
+.paid-check {
+  display: flex;
+  align-items: center;
+
+  .paid-check-icon {
+    margin-left: 10px;
+    color: green;
+    cursor: pointer;
+  }
+}

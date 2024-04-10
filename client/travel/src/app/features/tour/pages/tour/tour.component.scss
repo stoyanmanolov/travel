@@ -1,0 +1,28 @@
+.tour {
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-status-information {
+  margin: 20px auto;
+}
+
+.tour-rating {
+  margin: 20px auto;
+  font-size: 30px;
+}
+
+.tour-info {
+  margin: 0 auto;
+  padding: 35px;
+  max-width: 600px;
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  .tour-info-section {
+    line-height: 150%;
+    margin-bottom: 20px;
+  }
+}

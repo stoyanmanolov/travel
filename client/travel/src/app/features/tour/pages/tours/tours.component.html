@@ -1,0 +1,25 @@
+@for (section of sections; track $index) {
+<div
+  [ngClass]="{
+    section: true,
+    'section-centered': (isSmall$ | async)
+  }"
+>
+  <h2>
+    {{ section.title }}
+  </h2>
+  @if (section.list.length === 0) {
+  <p class="not-found-text">No tours found.</p>
+  } @else {
+  <mat-grid-list
+    class="cards-container"
+    [cols]="(isSmall$ | async) ? 1 : (isMedium$ | async) ? 3 : 4"
+    rowHeight="1:1"
+  >
+    <mat-grid-tile *ngFor="let tour of section.list">
+      <app-tour-card class="card" [tour]="tour"></app-tour-card
+    ></mat-grid-tile>
+  </mat-grid-list>
+  }
+</div>
+}

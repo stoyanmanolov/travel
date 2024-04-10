@@ -1,0 +1,45 @@
+@if (!blog) {
+<div>Not found</div>
+} @else {
+<div class="container">
+  <app-thumbnail-image
+    [thumbnailImageId]="blog.thumbnailImageId"
+  ></app-thumbnail-image>
+  <div class="section">
+    <div class="section-main">
+      <h2>{{ blog.title }}</h2>
+      <h3>{{ blog.subtitle }}</h3>
+      <div class="date-creator">
+        <span>{{ blog.createdAt | date : "mediumDate" }}</span>
+        <span
+          >by <b>{{ blog.username }}</b></span
+        >
+      </div>
+      <div class="tag-names">
+        <mat-chip-set>
+          <mat-chip *ngFor="let tagName of blog.tagNames">{{
+            tagName
+          }}</mat-chip>
+        </mat-chip-set>
+      </div>
+    </div>
+    <div class="section-content">
+      <p [innerHTML]="blog.content"></p>
+    </div>
+    <div class="section-comments">
+      <h3>Comments</h3>
+
+      <app-comment-form
+        [blog]="blog"
+        (success)="handleNewCommentAdded($event)"
+      ></app-comment-form>
+
+      <ul class="comments">
+        <li *ngFor="let comment of comments">
+          <app-comment [comment]="comment"></app-comment>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+}

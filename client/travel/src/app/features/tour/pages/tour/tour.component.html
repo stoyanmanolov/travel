@@ -1,0 +1,61 @@
+@if (!tour) {
+<div>Not found</div>
+} @else {
+<div class="tour">
+  <app-thumbnail-image
+    [title]="tour.title"
+    [thumbnailImageId]="tour.thumbnailImageId"
+  ></app-thumbnail-image>
+  <h2
+    class="tour-status-information"
+    *ngIf="tour.status === 'ACTIVE' || tour.status === 'FINISHED'"
+  >
+    This tour has already
+    {{ tour.status === "ACTIVE" ? "started" : "finished" }}.
+  </h2>
+
+  <div class="tour-rating">
+    <b>Rating: </b>
+    @if (tour.reviewsCount === 0) {
+    <span>Not rated yet</span>
+    } @else {
+    <span>{{ tour.reviewsRatingAverage | number : "1.0-1" }}</span>
+    <span>⭐</span>
+    }
+  </div>
+
+  <div class="tour-info">
+    <div class="tour-info-section">
+      <h3>Overview</h3>
+      <div [innerHTML]="tour.description"></div>
+    </div>
+    <div class="tour-info-section">
+      <h3>Place</h3>
+      <div>{{ tour.destinationName + ", " + tour.destinationCountry }}</div>
+    </div>
+    <div class="tour-info-section">
+      <h3>Start date</h3>
+      <div>{{ tour.startDate | date : "medium" }}</div>
+    </div>
+    <div class="tour-info-section">
+      <h3>End date</h3>
+      <div>{{ tour.endDate | date : "medium" }}</div>
+    </div>
+    <div class="tour-info-section">
+      <h3>Pricing</h3>
+      <div>
+        <b>{{ "$" + tour.price + " per person" }}</b>
+      </div>
+    </div>
+
+    <button
+      *ngIf="tour.status === 'UPCOMING'"
+      mat-raised-button
+      color="primary"
+      (click)="handleOpenBookingDialog()"
+    >
+      Book
+    </button>
+  </div>
+</div>
+}

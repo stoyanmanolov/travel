@@ -1,0 +1,36 @@
+.form-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-card {
+  width: 80%;
+  max-width: 500px;
+  margin-bottom: 100px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-card-title {
+    margin-bottom: 40px;
+  }
+}
+
+.form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-field {
+    width: 100%;
+  }
+
+  .form-button-container {
+    margin-top: 20px;
+  }
+}

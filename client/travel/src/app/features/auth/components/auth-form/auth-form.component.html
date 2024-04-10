@@ -1,0 +1,35 @@
+<div class="form-container">
+  <mat-card class="form-card">
+    <mat-card-title class="form-card-title">{{ title }}</mat-card-title>
+    <form class="form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Enter your username</mat-label>
+        <input matInput formControlName="username" type="text" />
+        @if (username.invalid) {
+        <mat-error>{{ getErrorMessage(username) }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input matInput formControlName="password" type="password" />
+        @if (password.invalid) {
+        <mat-error>{{ getErrorMessage(password) }}</mat-error>
+        }
+      </mat-form-field>
+
+      <ng-content> </ng-content>
+
+      <div>
+        <button
+          class="form-button-container"
+          mat-raised-button
+          color="primary"
+          type="submit"
+        >
+          {{ buttonText }}
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

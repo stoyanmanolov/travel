@@ -1,0 +1,18 @@
+<app-dialog-wrapper
+  [title]="'Booking: ' + data.tour.title"
+  [hideActions]="true"
+>
+  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your phone number</mat-label>
+      <input matInput formControlName="phoneNumber" type="phone" />
+      @if (phoneNumber.invalid) {
+      <mat-error>{{ getErrorMessage(phoneNumber) }}</mat-error>
+      }
+    </mat-form-field>
+    <mat-dialog-actions>
+      <button mat-raised-button color="primary">Book</button>
+      <button mat-raised-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+  </form>
+</app-dialog-wrapper>

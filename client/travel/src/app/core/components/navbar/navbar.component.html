@@ -1,0 +1,42 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    fixedInViewport
+    [opened]="(isSmall$ | async) ? false : true"
+    role="navigation"
+    mode="side"
+    class="sidenav"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <button
+        mat-list-item
+        *ngFor="let item of navItems"
+        (click)="item.action()"
+        [ngClass]="{
+          'sidenav-button': true,
+          hidden: item.hidden | async
+        }"
+      >
+        <mat-icon matListItemIcon [fontIcon]="item.icon"></mat-icon>
+        {{ item.label }}
+      </button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar color="primary">
+      @if (isSmall$ | async) {
+      <button type="button" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      }
+      <span>Travel</span>
+      <div class="toolbar-menu">
+        <mat-icon class="toolbar-menu-item" (click)="handleSearchClick()">
+          search
+        </mat-icon>
+      </div>
+    </mat-toolbar>
+    <ng-content> </ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

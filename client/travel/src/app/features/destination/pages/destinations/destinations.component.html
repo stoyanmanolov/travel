@@ -1,0 +1,12 @@
+<mat-grid-list
+  class="cards-container"
+  [cols]="(isSmall$ | async) ? 1 : (isMedium$ | async) ? 3 : 5"
+  rowHeight="2:1"
+>
+  <mat-grid-tile *ngFor="let destination of destinations">
+    <app-destination-card
+      class="card"
+      [destination]="destination"
+    ></app-destination-card>
+  </mat-grid-tile>
+</mat-grid-list>

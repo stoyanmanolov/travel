@@ -1,0 +1,10 @@
+<div class="container">
+  <mat-icon class="icon">travel_explore</mat-icon>
+  <h1>{{ heading }}</h1>
+  <p>For all your traveling and blogging needs.</p>
+  @if (!(isAuthenticated$ | async)) {
+  <p><a routerLink="/auth/login">Login</a> to find out more.</p>
+  } @else {
+  <p><a routerLink="/tours">Check out</a> the upcoming tours.</p>
+  }
+</div>

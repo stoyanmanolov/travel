@@ -1,0 +1,33 @@
+<app-dialog-wrapper
+  [title]="'Reviews: ' + data.tour.title"
+  [hideConfirm]="true"
+>
+  <mat-list class="list">
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="form-field-rating">
+        <mat-label>Rating</mat-label>
+        <mat-select formControlName="rating">
+          <mat-option [value]="1">1⭐</mat-option>
+          <mat-option [value]="2">2⭐</mat-option>
+          <mat-option [value]="3">3⭐</mat-option>
+          <mat-option [value]="4">4⭐</mat-option>
+          <mat-option [value]="5">5⭐</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-field-description">
+        <mat-label>Add description</mat-label>
+        <input matInput formControlName="description" />
+      </mat-form-field>
+      <button mat-raised-button type="submit" color="primary">Rate</button>
+    </form>
+    <mat-list-item class="list-item" *ngFor="let review of reviews">
+      <mat-icon class="list-item-icon" matListItemIcon>account_circle</mat-icon>
+      <span matListItemTitle>{{ review.username }}</span>
+      <span matListItemLine [title]="review.description">
+        {{
+          review.rating + "⭐ " + (review.description ? review.description : "")
+        }}
+      </span>
+    </mat-list-item>
+  </mat-list>
+</app-dialog-wrapper>
