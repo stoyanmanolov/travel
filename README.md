@@ -36,4 +36,3 @@ The app is built with a SPA JavaScript/TypeScript frontend (Angular) and a Java 
 ---
 
 ![TravelThree](/screenshots/travel3.png?raw=true)
-"# travel" 
