@@ -73,7 +73,12 @@ public class TourService {
 
     public Tour getFeatured() {
         List<Tour> toursList = tourRepository.findAll();
-        toursList.sort(Comparator.comparing(Tour::getFeaturedDate));
+        toursList.sort(
+                Comparator.comparing(
+                        Tour::getFeaturedDate,
+                        Comparator.nullsLast(Comparator.naturalOrder())
+                )
+        );
 
         Tour tour = null;
 
@@ -94,10 +99,10 @@ public class TourService {
         return tourRepository.findAll();
     }
 
-    public Tour getTour(Long id) {
+    public Tour getTour(Long id) throws NotFoundException {
         return tourRepository
                 .findById(id)
-                .orElse(null);
+                .orElseThrow(() -> new NotFoundException("No tour with the provided id is found"));
     }
 
     public void bookTour(Long tourId, User user, String phoneNumber) throws NotFoundException, RequestException {

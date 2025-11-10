@@ -55,7 +55,7 @@ public class BlogController {
     }
 
     @PostMapping
-    public ResponseEntity<BlogResponseDto> createBlog(@ModelAttribute @Valid BlogCreationDto dto) throws IOException {
+    public ResponseEntity<BlogResponseDto> createBlog(@ModelAttribute @Valid BlogCreationDto dto) throws IOException, NotFoundException {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Blog blog = blogService.createBlog(
                 dto.getTitle(),
@@ -75,11 +75,7 @@ public class BlogController {
     ResponseEntity<String> deleteBlog(@PathVariable Long id) throws RequestException, NotFoundException {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        if (!blogService.isOwner(id, user)) {
-            throw new RequestException("You are not the owner of the blog");
-        }
-
-        blogService.deleteBlog(id);
+        blogService.deleteBlog(id, user);
 
         return ResponseEntity.ok("The blog is successfully deleted");
     }

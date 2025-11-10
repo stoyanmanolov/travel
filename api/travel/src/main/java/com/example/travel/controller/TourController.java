@@ -61,10 +61,6 @@ public class TourController {
     public ResponseEntity<TourResponseDto> getTour(@PathVariable Long id) throws NotFoundException {
         Tour tour = tourService.getTour(id);
 
-        if (tour == null) {
-            throw new NotFoundException("No tour with the provided id is found");
-        }
-
         return ResponseEntity.ok(
                 tourMapper.toDto(tour)
         );

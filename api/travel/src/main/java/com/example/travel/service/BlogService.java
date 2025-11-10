@@ -50,7 +50,7 @@ public class BlogService {
             MultipartFile file,
             Long userId,
             Long tourId
-    ) throws IOException {
+    ) throws IOException, NotFoundException {
         User user = userService.getUser(userId);
         Tour tour = tourService.getTour(tourId);
 
@@ -62,7 +62,10 @@ public class BlogService {
         return blogRepository.save(blog);
     }
 
-    public void deleteBlog(Long id) {
+    public void deleteBlog(Long id, User user) throws RequestException, NotFoundException {
+        if (!this.isOwner(id, user)) {
+            throw new RequestException("You are not the owner of the blog");
+        }
         blogRepository.deleteById(id);
     }
 
