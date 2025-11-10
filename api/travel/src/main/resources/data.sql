@@ -1,8 +1,3 @@
---INSERT INTO user
---(username, password_hash, user_role)
---VALUES
---("username", "$2a$10$BHKFNefZ2HTzOAG/Yp7DEO1zf0.qw9O6LJhT2qD/vUwxdWi0KnNx.", "ADMIN");
-
 --INSERT INTO destination
 --(name, country)
 --VALUES
