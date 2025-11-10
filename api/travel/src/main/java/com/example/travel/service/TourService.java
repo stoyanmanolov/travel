@@ -72,23 +72,10 @@ public class TourService {
     }
 
     public Tour getFeatured() {
-        List<Tour> toursList = tourRepository.findAll();
-        toursList.sort(
-                Comparator.comparing(
-                        Tour::getFeaturedDate,
-                        Comparator.nullsLast(Comparator.naturalOrder())
-                )
-        );
-
-        Tour tour = null;
-
-        if (!toursList.isEmpty()) {
-            if (toursList.getFirst().getFeaturedDate() != null) {
-                tour = toursList.getFirst();
-            }
-        }
-
-        return tour;
+        return tourRepository.findAll().stream()
+                .filter(t -> t.getFeaturedDate() != null)             // ignore null dates
+                .min(Comparator.comparing(Tour::getFeaturedDate))     // get earliest featured date
+                .orElse(null);
     }
 
     public void deleteTour(Long id) {
