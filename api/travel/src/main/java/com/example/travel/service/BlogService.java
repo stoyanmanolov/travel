@@ -105,7 +105,9 @@ public class BlogService {
     }
 
     public List<Comment> getBlogComments(Long blogId) {
-        return commentRepository.findAllByBlogId(blogId);
+        List<Comment> comments = commentRepository.findAllByBlogId(blogId);
+        comments.sort((c1, c2) -> c2.getCreatedAt().compareTo(c1.getCreatedAt()));
+        return comments;
     }
 
     public boolean isOwner(Long blogId, User user) throws NotFoundException {

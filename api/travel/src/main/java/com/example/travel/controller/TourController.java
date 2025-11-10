@@ -134,10 +134,6 @@ public class TourController {
     public ResponseEntity<TourResponseDto> getFeatured() {
         Tour tour = tourService.getFeatured();
 
-        if (tour == null) {
-            return ResponseEntity.ok(null);
-        }
-
         return ResponseEntity.ok(
                 tourMapper.toDto(tour)
         );

@@ -93,8 +93,6 @@ public class BlogController {
     public ResponseEntity<List<CommentResponseDto>> getBlogComments(@PathVariable Long id) {
         List<Comment> comments = blogService.getBlogComments(id);
 
-        comments.sort((c1, c2) -> c2.getCreatedAt().compareTo(c1.getCreatedAt()));
-
         return ResponseEntity.ok(
                 comments
                         .stream()
