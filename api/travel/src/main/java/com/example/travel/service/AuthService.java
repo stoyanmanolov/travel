@@ -7,6 +7,7 @@ import com.example.travel.model.UserRole;
 import com.example.travel.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,15 +36,14 @@ public class AuthService {
     }
 
     public User login(String username, String password) throws RequestException {
-        User user = userRepository
-                .findByUsername(username)
-                .orElseThrow(() -> new RequestException("Invalid username or password"));
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        username,
-                        password
-                )
-        );
-        return user;
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(username, password)
+            );
+            return userRepository.findByUsername(username)
+                    .orElseThrow(() -> new RequestException("Invalid username or password"));
+        } catch (AuthenticationException e) {
+            throw new RequestException("Invalid username or password");
+        }
     }
 }
